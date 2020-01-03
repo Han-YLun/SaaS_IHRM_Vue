@@ -1,0 +1,204 @@
+#app {
+  // 主体区域
+  .main-container {
+    min-height: 100%;
+    transition: margin-left 0.28s;
+    margin-left: 180px;
+  } // 侧边栏
+  .sidebar-container {
+    -webkit-box-shadow: 2px 0 6px rgba(0,21,41,.35);
+    box-shadow: 2px 0 6px rgba(0,21,41,.35);
+    transition: width 0.28s;
+    // background-color: #001529;
+    background: -webkit-linear-gradient(bottom, #3d6df8, #5b8cff);
+    width: 180px!important;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    a {
+      display: inline-block;
+      width: 100%;
+    }
+    .svg-icon {
+      margin-right: 16px;
+    }
+    .el-menu {
+      border: none;
+      width: 100%;
+      background: none;
+      a{
+        li{
+          .svg-icon{
+            color: #fff;
+            font-size: 18px;
+            vertical-align: middle;
+            .icon{
+              color:#fff;
+            }
+          }
+          span{
+            color: #fff;
+          }
+          &:hover{
+            .svg-icon{
+              color: #43a7fe
+            }
+            span{
+              color: #43a7fe;
+            }
+          }
+        }
+      }
+    }
+  }
+  .scroll-wrapper{
+    height: 100%;
+    background: url('../assets/leftnavBg.png') no-repeat 0 100%
+  }
+  .hideSidebar {
+    .sidebar-container,.sidebar-container .el-menu {
+      width: 36px!important;
+      overflow: inherit;
+    }
+    .main-container {
+      margin-left: 36px;
+    }
+  }
+  .hideSidebar {
+    .submenu-title-noDropdown {
+      padding-left: 10px!important;
+      position: relative;
+      span {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: opacity .3s cubic-bezier(.55, 0, .1, 1);
+        opacity: 0;
+        display: inline-block;
+      }
+      .svg-icon {
+        margin-left: -10px;
+      }
+      &:hover {
+        span {
+          display: block;
+          border-radius: 3px;
+          z-index: 1002;
+          width: 140px;
+          height: 56px;
+          visibility: visible;
+          position: absolute;
+          right: -145px;
+          text-align: left;
+          text-indent: 20px;
+          top: 0px;
+          background-color: $subMenuBg!important;
+          opacity: 1;
+        }
+      }
+    }
+    .el-menu-item {
+      padding-left: 10px!important;
+      &>.el-tooltip {
+        padding-left: 10px!important;
+      }
+    }
+    .el-submenu {
+      &>.el-submenu__title {
+        padding-left: 10px!important;
+        &>span {
+          display: none;
+        }
+        .el-submenu__icon-arrow {
+          display: none;
+        }
+      }
+      .nest-menu {
+        .el-submenu__icon-arrow {
+          display: block!important;
+        }
+        span {
+          display: inline-block!important;
+        }
+      }
+    }
+  }
+  .nest-menu .el-submenu>.el-submenu__title,
+  .el-submenu .el-menu-item {
+    min-width: 180px!important;
+    background-color: $subMenuBg!important;
+    &:hover {
+      background-color: $menuHover!important;
+      span {
+        color: #fff;
+      }
+    }
+  }
+  .el-menu--collapse .el-menu .el-submenu{
+    min-width: 180px!important;
+  }
+  // logo标志
+  .sidebar-logo ,.sidebar-logo-mini {
+    font-size: 20px;
+    text-align: center;
+    line-height: 56px;
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    font-weight: 600;
+    font-family: "Myriad Pro","Helvetica Neue",Arial,Helvetica,sans-serif;
+    img {
+      width: 140px;
+      padding: 0px;
+      margin: 5px;
+    }
+  }
+  .sidebar-logo {
+    width:180px;
+    height:56px;
+  }
+  .sidebar-logo-mini {
+    display: none;
+    width:36px;
+    height:56px;
+    img {
+      width: 32px;
+      padding: 0px;
+      margin: 10px 0px;
+    }
+  }
+  .hideSidebar {
+    .sidebar-logo {
+      display: none;
+    }
+    .sidebar-logo-mini {
+      display: block;
+    }
+  }
+  
+  .sidebar-container .el-menu .el-menu-item.is-active {
+    background-color: #fff!important;
+    &:hover {
+      background-color: #fff!important;
+    }
+    .svg-icon{
+      color: #43a7fe
+    }
+    span{
+      color: #43a7fe;
+    }
+  }
+  .el-submenu.is-active .el-submenu__title {
+    color: #43a7fe!important;
+    .el-submenu__icon-arrow {
+      color: #43a7fe!important;
+    }
+  }
+  .el-submenu__icon-arrow {
+    font-weight: 600;
+  }
+}

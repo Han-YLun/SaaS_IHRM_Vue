@@ -1,0 +1,36 @@
+stages:
+  - test
+  - build
+  - deploy
+
+sonar_analyze:
+  stage: test
+  script:
+    - ci/sonar_analyze.sh
+  tags:
+    - saas-hrm-vue
+
+sonar_preview:
+  stage: test
+  script:
+    - ci/sonar_preview.sh
+  tags:
+    - saas-hrm-vue
+
+# build_image:
+#   stage: build
+#   # services:
+#   #   - node:8
+#   script: 
+#     - ci/build.sh
+#   tags:
+#     - saas-hrm-vue
+
+deploy_image:
+  stage: deploy
+  # services:
+  #   - node:8
+  script: 
+    - ci/deploy.sh
+  tags:
+    - saas-hrm-vue
