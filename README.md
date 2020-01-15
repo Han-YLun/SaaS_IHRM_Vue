@@ -50,4 +50,12 @@ npm start
 
 
 
+## 5.运行项目
+
+```sh
+cnpm install
+npm run dev
+```
+
+
 
