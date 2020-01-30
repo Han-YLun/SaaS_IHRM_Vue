@@ -57,8 +57,8 @@ const user = {
             password: userInfo.password
           }).then(response => {
             const data = response.data.data
-            commit('SET_TOKEN', data.token)
-            setToken(data.token)
+            commit('SET_TOKEN', data)
+            setToken(data)
             resolve()
         }).catch(error => {
           reject(error)

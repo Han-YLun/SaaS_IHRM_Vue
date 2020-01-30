@@ -24,10 +24,10 @@
       <el-button class="loginBtn" type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
       <div class="regInfo"><router-link :to="{'path':'/reg'}">还没有账号？立即注册</router-link></div>
       <div class="tips">
-        <span>账号: <br>18636825185 (SaaS管理员)<br>
+        <span>账号: <br> (SaaS管理员)<br>
          <!-- CompanyAdmin (企业管理员) <br>CompanyUser (企业用户)<br> -->
          </span>
-        <span>密码: 654321</span>
+        <span>密码: </span>
       </div>
 
       <!-- <el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button> -->
@@ -75,8 +75,8 @@ export default {
     }
     return {
       loginForm: {
-        username: '13800138003',
-        password: '1234561'
+        username: '13800000001',
+        password: '123456'
       },
       loginRules: {
         username: [
