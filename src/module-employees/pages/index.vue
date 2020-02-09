@@ -133,9 +133,11 @@ export default {
         }
       ).then(() => {
           remove({ id: item.id })
-            .then(response => {
-              this.$message.success('删除成功' + '!')
-              this.doQuery();
+            .then(res => {
+              this.$message({message:res.data.message,type:res.data.success?'success':'error'})
+              if(res.data.success) {
+                this.doQuery();
+              }
             })
         })
     },
