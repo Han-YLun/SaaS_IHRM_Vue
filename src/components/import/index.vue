@@ -100,7 +100,7 @@ export default {
       this.uploadTip = '点击上传'
       this.processing = false
       this.dialogImportVisible = false
-      if (obj.code === 0) {
+      if (obj.code === 10000) {
         this.$message.success('导入成功' + '!')
       } else {
         this.$message.error('导入失败' + '!')

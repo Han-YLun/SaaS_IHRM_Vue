@@ -12,27 +12,9 @@
                        <el-input v-model="formData.username" placeholder="请输入" class="inputW"></el-input>
                      </el-form-item>
                      <el-form-item label="密码：">
-                       <el-input v-model="formData.password" placeholder="请输入" class="inputW"></el-input>
+                       <el-input v-model="formData.password" type="password" placeholder="请输入" class="inputW"></el-input>
                     </el-form-item>
-                    <el-form-item label="部门：">
-                        <el-input
-                          placeholder="请选择"
-                          v-model="formData.departmentName"
-                          icon="caret-bottom"
-                          class="inputW"
-                          @click.native="isShowSelect = !isShowSelect">
-                        </el-input>
-                        <input v-model="formData.departmentId" type="hidden" >
-                        <el-tree v-if="isShowSelect"
-                          :expand-on-click-node="false"
-                          :data="inspectionObjectOptions"
-                          :props="{label:'name'}"
-                          default-expand-all
-                           @node-click="handleNodeClick"
-                          class="objectTree"
-                          ref="tree2">
-                        </el-tree>
-                    </el-form-item>
+                  
                       <el-form-item>
                         <el-button type="primary" @click="saveData">更新</el-button>
                         <router-link :to="{'path':'/employees/index'}" class="el-button el-button--text el-button--small">

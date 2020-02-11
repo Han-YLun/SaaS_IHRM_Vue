@@ -9,9 +9,11 @@
             </el-tab-pane>
             <el-tab-pane name="two" class="rInfo">
                 <span slot="label">个人详情</span>
+                <component v-bind:is="userInfo" :objId='objId' ref="user"></component>
             </el-tab-pane>
             <el-tab-pane name="third" class="rInfo">
                 <span slot="label">岗位信息</span>
+                <component v-bind:is="postInfo" :objId='objId'></component>
             </el-tab-pane>
         </el-tabs>
       </el-card>
@@ -21,12 +23,16 @@
 
 <script>
 import accountInfo from './../components/details-account-info'
+import userInfo from './../components/details-user-info'
+import postInfo from './../components/details-post-info'
 export default {
   name: 'employeesDetails',
-  components: { accountInfo},
+  components: { accountInfo, userInfo, postInfo},
   data() {
     return {
       accountInfo:'accountInfo',
+      userInfo: 'userInfo',
+      postInfo: 'postInfo',  
       activeName: 'first',
       objId: this.$route.params.id,
       dataList: []
