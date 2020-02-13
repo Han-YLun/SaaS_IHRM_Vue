@@ -1,6 +1,5 @@
 /**
  * 解析时间
- * 
  * @export
  * @param {any} time 
  * @param {any} cFormat 

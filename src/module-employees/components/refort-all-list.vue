@@ -200,7 +200,7 @@ export default {
           this.listLoading = false
         })
         .catch(e => {
-          this.$message.e('错了哦，这是一条错误消息')
+          //this.$message.e('错了哦，这是一条错误消息')
         })
     },
     // 新增用户刷新列表
@@ -267,7 +267,7 @@ export default {
         .then(res => {
           var elemIF = document.createElement("iframe");     
           elemIF.src = res.request.responseURL;     
-          elemIF.style.display = "none";     
+          elemIF.style.display = "none";    
           document.body.appendChild(elemIF);     
         })
         .catch(e => {
