@@ -21,14 +21,9 @@
         </span>
       </el-form-item>
 
-      <el-button class="loginBtn" type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+      <el-button class="loginBtn" type="primary" style="width:49%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+      <el-button class="loginBtn" type="primary" style="width:49%;margin-bottom:30px; margin-left:0" @click="handlecode">刷脸登录</el-button>
       <div class="regInfo"><router-link :to="{'path':'/reg'}">还没有账号？立即注册</router-link></div>
-      <div class="tips">
-        <span>账号: <br> (SaaS管理员)<br>
-         <!-- CompanyAdmin (企业管理员) <br>CompanyUser (企业用户)<br> -->
-         </span>
-        <span>密码: </span>
-      </div>
 
       <!-- <el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button> -->
     </el-form>
@@ -41,6 +36,15 @@
       <login-social-signin />
     </el-dialog>
 
+    <!-- 二维码弹层 -->
+    <el-dialog
+      title="扫一扫"
+      :visible.sync="centerDialogVisible"
+      width="240px"
+      align='center'
+      class="code">
+      <span><img class="customerHead" :src="param.qrcode" alt=""></span>
+    </el-dialog>
   </div>
 </template>
 
@@ -49,6 +53,8 @@ import { validateEmail } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 import loginSocialSignin from './../components/loginSocialSignin'
 import shajs from 'sha.js'
+import { qrcode, codeCheck } from '@/api/base/faceLogin'
+import { getToken, setToken, removeToken } from '@/utils/auth'
 
 export default {
   components: { LangSelect, loginSocialSignin },
@@ -74,8 +80,12 @@ export default {
       }
     }
     return {
+      centerDialogVisible:false,
+      param: {
+        qrcode: ''
+      },
       loginForm: {
-        username: '13800000001',
+        username: '13800000002',
         password: '123456'
       },
       loginRules: {
@@ -88,7 +98,8 @@ export default {
       },
       passwordType: 'password',
       loading: false,
-      showDialog: false
+      showDialog: false,
+      states: '-1',
     }
   },
   methods: {
@@ -105,39 +116,41 @@ export default {
         .dispatch('LoginByUsername', {
           mobile: this.loginForm.username,
           password: this.loginForm.password
-        })
-        .then(res => {
+        }).then(res => {
           this.loading = false
           this.$router.push({ path: '/' })
-        })
-        .catch(() => {
+        }).catch(() => {
           this.loading = false
         })
     },
-    afterQRScan() {
-      // const hash = window.location.hash.slice(1)
-      // const hashObj = getQueryObject(hash)
-      // const originUrl = window.location.origin
-      // history.replaceState({}, '', originUrl)
-      // const codeMap = {
-      //   wechat: 'code',
-      //   tencent: 'code'
-      // }
-      // const codeName = hashObj[codeMap[this.auth_type]]
-      // if (!codeName) {
-      //   alert('第三方登录失败')
-      // } else {
-      //   this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
-      //     this.$router.push({ path: '/' })
-      //   })
-      // }
+    // 验证码
+    handlecode() {
+      qrcode().then(res => {
+        this.param.qrcode = res.data.data.file
+        this.centerDialogVisible = true
+        this.codeCheckInfo = res.data.code
+        setInterval(() => {
+          if (this.states == '-1') {
+          codeCheck({ code: res.data.data.code }).then(res => {
+            this.states = res.data.data.state
+            this.token = res.data.data.token
+            if (this.states == '1') {
+              // 登录
+              if(this.token && this.token != undefined) {
+                setToken(this.token)
+                this.$store.commit('SET_TOKEN', this.token)
+                this.$router.push({ path: '/' })
+              }
+            } 
+            if (this.states == '0') {
+              // 关闭
+              this.centerDialogVisible = false
+            }
+          })
+        }
+        }, 1000 * 5)
+      })
     }
-  },
-  created() {
-    // window.addEventListener('hashchange', this.afterQRScan)
-  },
-  destroyed() {
-    // window.removeEventListener('hashchange', this.afterQRScan)
   }
 }
 </script>
@@ -173,15 +186,19 @@ $light_gray: #68b0fe;
     color: #454545;
   }
 }
+.code {
+  .el-dialog__body {
+    padding: 15px 0;
+  }
+}
 </style>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
-
 .login-container {
-  position: fixed;
+  // position: fixed;
   height: 100%;
   width: 100%;
   background: url(./../assets/login.jpg) 50% 50% no-repeat;

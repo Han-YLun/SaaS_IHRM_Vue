@@ -9,7 +9,7 @@ import {hasPermissionPoint, hasPermission} from '@/utils/permission'
 
 // 定义
 const _import = require('./import_' + process.env.NODE_ENV) // 懒加载 导包
-const whiteList = ['/login', '/reg', '/authredirect'] // 白名单 无需跳转
+const whiteList = ['/login', '/reg', '/authredirect' , '/facelogin'] // 白名单 无需跳转
 
 // 配置
 Vue.use(Router)
@@ -46,6 +46,11 @@ export const constantRouterMap = [
   {
     path: '/authredirect',
     component: _import('dashboard/pages/authredirect'),
+    hidden: true
+  },
+  {
+    path: '/facelogin',
+    component: _import('dashboard/pages/facelogin'),
     hidden: true
   },
   {path: '/404', component: _import('dashboard/pages/404'), hidden: true},
