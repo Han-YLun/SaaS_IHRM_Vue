@@ -1,0 +1,26 @@
+import {createAPI, createFormAPI} from '@/utils/request'
+
+export const dimission = data => createAPI('/user/apply/dimission', 'put', data)
+export const applyOvertime = data => createAPI('/user/apply/overtime', 'put', data)
+export const applyLeave = data => createAPI('/user/apply/leave', 'put', data)
+export const approvalsList = data => createAPI('/user/approvals', 'get', data)
+export const regularWorker = data => createAPI('/user/approvals/:id/regularWorker', 'put', data)
+// export const transferPosition = data => createAPI('/user/approvals/:id/transferPosition', 'get', data)
+
+export const getSalarysList = data => createAPI('/salarys/list', 'post', data)
+export const getCompanySettings = data => createAPI('/salarys/company-settings', 'get')
+export const saveCompanySettings = data => createAPI('/salarys/company-settings', 'post',data)
+export const getTips = data => createAPI(`/salarys/tips/${data.yearMonth}`, 'get')
+export const getSettings = data => createAPI('/salarys/settings', 'get')
+export const saveSettings = data => createAPI('/salarys/settings', 'post',data)
+export const initSalary = data => createAPI(`/salarys/init/${data.userId}`, 'post',data)
+export const changeSalary = data => createAPI(`/salarys/modify/${data.userId}`, 'post',data)
+export const getSalary = data => createAPI(`/salarys/modify/${data.userId}`, 'get',data)
+export const getDetail = data => createAPI(`/salarys/${data.userId}`, 'get',data)
+export const getArchivingCont = data => createAPI(`/salarys/reports/${data.yearMonth}`, 'get', data)
+export const newReport = data => createAPI(`/salarys/reports/${data.yearMonth}/newReport`, 'put', data)
+export const getArchivingExport = data => createAPI(`/salarys/reports/${data.yearMonth}/export`, 'get', data)
+export const getArchivingFirst = data => createAPI(`/salarys/reports/${data.yearMonth}/first`, 'get', data)
+export const getArchivingArchive = data => createAPI(`/salarys/reports/${data.yearMonth}/archive`, 'post', data)
+export const getArchivingList = data => createAPI(`/salarys/reports/${data.year}/list`, 'get', data)
+

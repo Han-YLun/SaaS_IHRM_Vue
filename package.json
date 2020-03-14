@@ -17,17 +17,20 @@
     "axios": "^0.18.0",
     "echarts": "^3.8.5",
     "element-ui": "^2.2.2",
+    "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "js-cookie": "^2.2.0",
-    "mockjs": "^1.0.1-beta3",
+    "moment": "^2.24.0",
     "normalize.css": "^8.0.0",
     "nprogress": "^0.2.0",
     "screenfull": "^3.3.2",
     "sha.js": "^2.4.11",
     "vue": "^2.5.2",
+    "vue-bus": "^1.2.1",
     "vue-i18n": "^7.6.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "xlsx": "^0.14.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

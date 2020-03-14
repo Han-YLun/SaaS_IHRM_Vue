@@ -1,10 +1,3 @@
-/*
- * @Author: hans.taozhiwei
- * @Description: 模块安装 itheima-module Add <module-name>
- * @Date: 2018-04-13 16:13:27 
- * @Last Modified by: hans.taozhiwei
- * @Last Modified time: 2018-09-20 14:49:21
- */
 
 module.exports = {
   prompts: {

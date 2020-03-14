@@ -1,0 +1,17 @@
+import {createAPI} from '@/utils/request'
+
+export const usersInfo = data => createAPI('/user/myinfo', 'get', data)
+export const dimission = data => createAPI('/user/apply/dimission', 'put', data)
+export const applyOvertime = data => createAPI('/user/apply/overtime', 'put', data)
+export const applyLeave = data => createAPI('/user/apply/leave', 'put', data)
+export const approvalsList = data => createAPI('/user/approvals', 'get', data)
+export const regularWorker = data => createAPI('/user/approvals/:id/regularWorker', 'put', data)
+export const transferPosition = data => createAPI('/user/approvals/:id/transferPosition', 'get', data)
+export const userDimission = data => createAPI('/user/approvals/:id/dimission', 'put', data)
+export const salary = data => createAPI('/user/approvals/:id/salary', 'put', data)
+export const examineLeave = data => createAPI('/user/approvals/:id/leave', 'put', data)
+export const overtime = data => createAPI('/user/approvals/:id/overtime', 'put', data)
+export const employ = data => createAPI('/user/approvals/:id/employ', 'put', data)
+export const recruitsList = data => createAPI('/user/recruits', 'get', data)
+export const recruitsInfo = data => createAPI('/user/recruits/:id', 'get', data)
+export const recruitsFlow = data => createAPI('/user/recruits/:id/flow', 'put', data)
