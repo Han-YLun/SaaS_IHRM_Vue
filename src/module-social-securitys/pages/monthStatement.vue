@@ -207,6 +207,7 @@ export default {
       })
         .then(() => {
           this.archive();
+          this.$message.success('归档成功' + '!')
         })
         .catch(() => {});
     },
@@ -232,6 +233,7 @@ export default {
           query: { yearMonth: this.yearMonth }
         });
         this.init();
+        this.$message.success('新建成功' + '!')
       });
     },
     clickCancel() {

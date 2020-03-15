@@ -29,6 +29,7 @@ export default {
       const { data: getDataRes } = await getSettings();
       if (getDataRes.data != null) {
         let dataMonth = getDataRes.data.dataMonth;
+        console.log(dataMonth)
         this.$router.push({ path: "./list",query:{'yearMonth':dataMonth}});
       }
     },
