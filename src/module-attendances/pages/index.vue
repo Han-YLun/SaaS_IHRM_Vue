@@ -99,21 +99,7 @@
             <el-button @click="centerDialogVisible = false">取 消</el-button>
           </span>
         </el-dialog>
-        <!-- <el-table  border :data="baseData" style="width: 100%" :default-sort = "{prop: 'date', order: 'descending'}" >
-          <el-table-column type="index" width="50" fixed style="text-align: center;" label="序号"> </el-table-column>
-          <el-table-column prop="name" label="姓名" fixed width="80" sortable> </el-table-column>
-          <el-table-column prop="workNumber" label="工号" width="80"> </el-table-column>
-          <el-table-column prop="department" label="部门" width="150"> </el-table-column>
-          <el-table-column prop="mobilePhone" label="手机" width="110"> </el-table-column>
-          <el-table-column prop="attendanceRecord">
-            <template slot-scope="attendanceRecord">
 
-              <el-table-column prop="attendanceRecord[3]">
-                  <span slot="label">3</span>
-              </el-table-column>
-            </template>
-          </el-table-column>
-        </el-table>-->
       </div>
     </div>
   </div>
@@ -136,7 +122,7 @@ export default {
     return {
       baseData: [],
       selectData: [],
-      stateData: [],
+      stateData: {},
       total: 100,
       attendanceRecord: "",
       monthOfReport: "",
@@ -154,9 +140,6 @@ export default {
       formData: {
         page: 1,
         pagesize: 10
-        // keyword: this.keyword,
-        // deptID: this.deptID, // 性别
-        // stateID: this.stateID
       },
       modifyData: {
         userId: "",
@@ -311,7 +294,6 @@ export default {
         this.attendInfo.name = item.name;
         this.centerDialogVisible = true;
       }
-      // console.log(this.modifyData)
     }
   },
   // 挂载结束

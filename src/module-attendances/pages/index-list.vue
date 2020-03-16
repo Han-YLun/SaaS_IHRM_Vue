@@ -99,21 +99,6 @@
             <el-button @click="centerDialogVisible = false">取 消</el-button>
           </span>
         </el-dialog>
-        <!-- <el-table  border :data="baseData" style="width: 100%" :default-sort = "{prop: 'date', order: 'descending'}" >
-          <el-table-column type="index" width="50" fixed style="text-align: center;" label="序号"> </el-table-column>
-          <el-table-column prop="name" label="姓名" fixed width="80" sortable> </el-table-column>
-          <el-table-column prop="workNumber" label="工号" width="80"> </el-table-column>
-          <el-table-column prop="department" label="部门" width="150"> </el-table-column>
-          <el-table-column prop="mobilePhone" label="手机" width="110"> </el-table-column>
-          <el-table-column prop="attendanceRecord">
-            <template slot-scope="attendanceRecord">
-
-              <el-table-column prop="attendanceRecord[3]">
-                  <span slot="label">3</span>
-              </el-table-column>
-            </template>
-          </el-table-column>
-        </el-table>-->
       </div>
     </div>
   </div>
@@ -136,7 +121,7 @@ export default {
     return {
       baseData: [],
       selectData: [],
-      stateData: [],
+      stateData: {},
       total: 100,
       attendanceRecord: "",
       monthOfReport: "",
@@ -171,7 +156,7 @@ export default {
     // 业务方法
     setupUI() {
       this.selectData = constantApi;
-      this.stateData = attendanceApi;
+      //this.stateData = attendanceApi;
       this.dataList(this.formData);
       this.getdepartment();
     },
@@ -302,13 +287,14 @@ export default {
           this.modifyData.adtStatu = "22";
       }
 
+
+
       if (it.adtStatu !== "") {
         this.attendInfo.getDate = parseInt(id + 1);
         this.attendInfo.getInfo = it.adtStatu;
         this.attendInfo.name = item.name;
         this.centerDialogVisible = true;
       }
-      // console.log(this.modifyData)
     }
   },
   // 挂载结束
