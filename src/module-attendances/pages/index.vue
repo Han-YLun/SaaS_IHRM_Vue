@@ -348,7 +348,7 @@ export default {
 .attenInfo {
   p {
     &.check {
-      padding: 20px 0 0;
+      margin: 20px 0 0;
     }
   }
 }

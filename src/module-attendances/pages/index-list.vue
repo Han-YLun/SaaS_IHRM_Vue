@@ -89,7 +89,7 @@
                   v-for="item in stateData.vacationtype"
                   :label="item.id"
                   :key="item.id"
-                  :value="item.name"
+                  :value="item.name" 
                 >{{item.name}}</el-radio>
               </el-radio-group>
             </p>
