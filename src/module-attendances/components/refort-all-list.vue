@@ -211,7 +211,9 @@ export default {
     },
     // 新建报表
     createReportForm() {
+      console.log(this.yearMonth); 
       let nextMonth = commonApi.getNextMonth(this.yearMonth);
+     
       this.requestParameters.atteDate = nextMonth.datas;
       this.$confirm(
         "新建报表会使得" +

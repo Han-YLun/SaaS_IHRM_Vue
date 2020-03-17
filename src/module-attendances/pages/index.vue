@@ -174,15 +174,21 @@ export default {
         } else {
           this.baseData = data.data.rows;
           this.attendInfo.counts = data.data.total;
-          var date = new Date();
-          var year = date.getFullYear();
-          var month = data.monthOfReport;
+          this.monthOfReport = this.baseData[0].attendanceRecord[0]['day'];
+         
           this.attendInfo.month = data.monthOfReport;
           this.attendInfo.tobeTaskCount = data.tobeTaskCount;
+          
+          //构造循环显示的正月 
+          var year = this.monthOfReport.slice(0,4);
+          console.log(year);
+          var month = this.monthOfReport.slice(4,6);
+          console.log(month);
           var d = new Date(year, month, 0);
-          this.monthOfReport = d.getDate();
+          this.monthOfReport = d.getDate()-1;
 
-          this.yearMonth = year + (""+month<10?"0"+month:month);
+          this.yearMonth = year + month;
+          console.log(this.yearMonth);
           this.month = data.monthOfReport;
         }
       });
