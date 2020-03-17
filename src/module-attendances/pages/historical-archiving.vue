@@ -37,7 +37,7 @@
             <i class="fa fa-chevron-right" aria-hidden="true"></i>
           </div>
           <div>
-            <p class="title" ref="sheelName">{{itemes.month}}月员工报表</p>
+            <p class="title" ref="sheelName">{{itemes.archiveMonth}}月员工报表</p>
             <p @click="openTable(itemes,index)" class="labTit">考勤统计</p>
           </div>
           <div class="fr">
@@ -45,13 +45,13 @@
               <p class="itemTit">
                 <span>总人数</span>
               </p>
-              <p class="itemNum">{{itemes.totalNumber}}</p>
+              <p class="itemNum">{{itemes.totalPeopleNum}}</p>
             </div>
             <div>
               <p class="itemTit">
                 <span>全勤人数</span>
               </p>
-              <p class="itemNum">{{itemes.fullAttendance}}</p>
+              <p class="itemNum">{{itemes.fullAttePeopleNum}}</p>
             </div>
           </div>
         </div>
@@ -150,13 +150,13 @@ export default {
   data() {
     return {
       num: 0,
-      yearVal: commonApi.getMonth().preDates,
+      yearVal: '2019',
       tableData: [],
       showArchivig: false,
       counts: "",
       requestParameters: {
         departmentId: "",
-        year: commonApi.getMonth().preYear
+        year: '2019'
       },
       baseData: {
         atteArchiveMonthlyId: ""

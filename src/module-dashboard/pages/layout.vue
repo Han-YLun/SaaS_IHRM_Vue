@@ -7,11 +7,11 @@
 			<layout-app-main></layout-app-main>
       <div class="bottom">
         <p>
-          <a href="https://github.com/itheima2017/vue-element-admin-itheima" target="_blank">
+          <a href="https://github.com/Han-YLun/SaaS_HRM_Vue" target="_blank">
             <svg-icon icon-class="github"></svg-icon>
           </a>
         </p>
-        <p>copyright<svg-icon icon-class="copyright"></svg-icon> 2018 iHRM 系统 版权所有</p>
+        <p>copyright<svg-icon icon-class="copyright"></svg-icon> 2020 iHRM 系统 版权所有</p>
       </div>
 		</div>
 	</div>
