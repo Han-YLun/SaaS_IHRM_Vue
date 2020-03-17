@@ -48,18 +48,6 @@
       <el-table-column prop="salaryStandard" label="计薪标准" width="100"></el-table-column>
       <el-table-column prop="officialSalaryDays" label="计薪天数" width="150"></el-table-column>
     </el-table>
-    <!-- 分页 -->
-    <!-- <div class="pagination">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :page-size="requestParameters.pagesize"
-        layout="total, prev, pager, next"
-        :total="Number(counts)"
-      ></el-pagination>
-    </div>-->
-    <!-- end -->
-    <!-- 数据表格 / -->
     <div class="butList">
       <el-tooltip
         class="item"
@@ -211,9 +199,8 @@ export default {
     },
     // 新建报表
     createReportForm() {
-      console.log(this.yearMonth); 
+      this.yearMonth = this.yearMonth.slice(0,4)+"-"+this.yearMonth.slice(4,6);
       let nextMonth = commonApi.getNextMonth(this.yearMonth);
-     
       this.requestParameters.atteDate = nextMonth.datas;
       this.$confirm(
         "新建报表会使得" +
@@ -235,7 +222,7 @@ export default {
 
           newReports(this.requestParameters).then(data => {
             this.$router.push({
-              path: "/attendances/report",
+              path: "/attendances/newReports",
               query: { yearMonth: this.requestParameters.atteDate }
             });
             this.doQuery(this.requestParameters);

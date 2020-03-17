@@ -76,7 +76,7 @@ export default {
         month2 = '0' + month2
     }
 
-    var datas = year2 + '-' + month2
+    var datas = year2 + month2
     var months = month2
     return {
       datas: datas,
