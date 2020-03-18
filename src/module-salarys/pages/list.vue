@@ -9,7 +9,7 @@
         <div class="lable-tit">
           <router-link :to="{ 'path':'/salarys/setting'}">设置</router-link>
           <router-link :to="{'path':'/salarys/historicalArchiving'}">历史归档</router-link>
-          <router-link :to="{'path':'/salarys/monthStatement',query:{'yearMonth':yearMonth}}">{{tips.strMonth}}月报表</router-link>
+          <router-link :to="{'path':'/salarys/monthStatement',query:{'yearMonth':yearMonth}}">{{yearMonth.slice(0,4)+"年"+yearMonth.slice(4,6)}}月报表</router-link>
         </div>
       </div>
     </div>
