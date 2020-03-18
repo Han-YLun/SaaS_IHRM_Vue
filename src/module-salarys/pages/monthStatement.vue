@@ -41,57 +41,23 @@
           <el-table-column prop="mobile" label="手机号" width="150px"></el-table-column>
           <el-table-column prop="workNumber" label="工号" width="150px"></el-table-column>
           <el-table-column prop="departmentName" label="部门名称" width="150px"></el-table-column>
-          <el-table-column prop="idNumber" label="身份证号" width="150px"></el-table-column>
-          <el-table-column prop="inServiceStatus" label="在职状态" width="150px"></el-table-column>
-          <el-table-column prop="formOfEmployment" label="聘用形式" width="150px"></el-table-column>
-          <el-table-column prop="currentSalaryTotalBase" label="最新工资基数合计" width="150px"></el-table-column>
-          <el-table-column prop="currentBaseSalary" label="最新基本工资基数" width="150px"></el-table-column>
-          <el-table-column prop="baseSalaryByMonth" label="当月基本工资基数" width="150px"></el-table-column>
-          <el-table-column prop="officialSalaryDays" label="计薪天数" width="150px"></el-table-column>
-          <el-table-column prop="salaryStandard" label="计薪标准" width="150px"></el-table-column>
-          <el-table-column prop="taxCountingMethod" label="计税方式" width="150px"></el-table-column>
-          <el-table-column prop="baseSalaryToTaxByMonth" label="当月纳税基本工资" width="150px"></el-table-column>
-          <el-table-column prop="attendanceDeductionMonthly" label="考勤扣款" width="150px"></el-table-column>
-          <el-table-column prop="taxToProvidentFund" label="公积金需纳税额" width="150px"></el-table-column>
-          <el-table-column prop="salaryBeforeTax" label="税前工资合计" width="150px"></el-table-column>
-          <el-table-column prop="salary" label="工资合计" width="150px"></el-table-column>
-          <el-table-column prop="salaryByTax" label="应纳税工资" width="150px"></el-table-column>
+          <el-table-column :formatter="judgeInServiceStatus" label="在职状态" width="150px"></el-table-column>
           <el-table-column prop="providentFundIndividual" label="公积金个人" width="150px"></el-table-column>
           <el-table-column prop="socialSecurityIndividual" label="社保个人" width="150px"></el-table-column>
-          <el-table-column prop="oldAgeIndividual" label="养老个人" width="150px"></el-table-column>
-          <el-table-column prop="medicalIndividual" label="医疗个人" width="150px"></el-table-column>
-          <el-table-column prop="unemployedIndividual" label="失业个人" width="150px"></el-table-column>
-          <el-table-column prop="aPersonOfGreatDisease" label="大病个人" width="150px"></el-table-column>
-          <el-table-column prop="socialSecurity" label="社保扣款" width="150px"></el-table-column>
-          <el-table-column prop="totalProvidentFund" label="公积金扣款" width="150px"></el-table-column>
-          <el-table-column prop="paymentBeforeTax" label="税前实发" width="150px"></el-table-column>
-          <el-table-column prop="tax" label="应扣税" width="150px"></el-table-column>
-          <el-table-column prop="salaryAfterTax" label="税后工资合计" width="150px"></el-table-column>
-          <el-table-column prop="payment" label="实发工资" width="150px"></el-table-column>
-          <el-table-column prop="paymentRemark" label="实发工资备注" width="150px"></el-table-column>
           <el-table-column prop="socialSecurityEnterprise" label="社保企业" width="150px"></el-table-column>
-          <el-table-column prop="pensionEnterprise" label="养老企业" width="150px"></el-table-column>
-          <el-table-column prop="medicalEnterprise" label="医疗企业" width="150px"></el-table-column>
-          <el-table-column prop="unemployedEnterprise" label="失业企业" width="150px"></el-table-column>
-          <el-table-column prop="industrialInjuryEnterprise" label="工伤企业" width="150px"></el-table-column>
-          <el-table-column prop="childbearingEnterprise" label="生育企业" width="150px"></el-table-column>
-          <el-table-column prop="bigDiseaseEnterprise" label="大病企业" width="150px"></el-table-column>
           <el-table-column prop="providentFundEnterprises" label="公积金企业" width="150px"></el-table-column>
-          <el-table-column
-            prop="socialSecurityProvidentFundEnterprises"
-            label="公积金社保企业"
-            width="150px"
-          ></el-table-column>
-          <el-table-column prop="salaryCost" label="薪酬成本" width="150px"></el-table-column>
-          <el-table-column prop="enterpriseLaborCost" label="企业人工成本" width="150px"></el-table-column>
-          <el-table-column prop="salaryChangeAmount" label="调薪金额" width="150px"></el-table-column>
-          <el-table-column prop="salaryChangeScale" label="调薪比例" width="150px"></el-table-column>
-          <el-table-column prop="effectiveTimeOfPayAdjustment" label="调薪生效时间" width="150px"></el-table-column>
-          <el-table-column prop="causeOfSalaryAdjustment" label="调薪原因" width="150px"></el-table-column>
-          <el-table-column prop="remark" label="注释" width="150px"></el-table-column>
-          <el-table-column prop="bankCardNumber" label="银行卡号" width="150px"></el-table-column>
-          <el-table-column prop="openingBank" label="开户行" width="150px"></el-table-column>
-          <el-table-column prop="paymentMonths" label="发薪月数" width="150px"></el-table-column>
+          <el-table-column prop="socialSecurityProvidentFundEnterprises" label="公积金社保企业" width="150px"></el-table-column>
+          <el-table-column prop="currentBaseSalary" label="基本工资" width="150px"></el-table-column>
+          <el-table-column prop="currentSalaryTotalBase-currentBaseSalary" label="岗位工资" width="150px"></el-table-column>
+          <el-table-column prop="" label="福利津贴" width="150px"></el-table-column>
+          <el-table-column prop="" label="考勤扣款" width="150px"></el-table-column>
+          <el-table-column prop="currentSalaryTotalBase" label="税前工资合计" width="150px"></el-table-column>
+          <el-table-column prop="salaryAfterTax" label="应纳税工资" width="150px"></el-table-column>
+          <el-table-column prop="tax" label="应扣税" width="150px"></el-table-column>
+          <el-table-column prop="payment" label="实发工资" width="150px"></el-table-column>
+
+        
+       
         </el-table>
       </div>
     </div>
@@ -223,6 +189,9 @@ export default {
         );
       getBlob(getName, items, XLSX.write, FileSaver.saveAs);
       this.$message.success("导出报表成功！");
+    },
+    judgeInServiceStatus(data){
+      return data.inServiceStatus != 0 ? '在职' : '离职';
     }
   },
   mounted() {
