@@ -1,8 +1,8 @@
 {
-  "name": "itheima-admin",
+  "name": "SaaS-IHRM系统",
   "version": "1.0.0",
-  "description": "黑马Admin 管理系统基础模板",
-  "author": "taoshiwei <taoshiwei@itcast.cn>",
+  "description": "基于SaaS的智能人力资源管理系统",
+  "author": "ArvinYL <ArvinYL@foxmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
