@@ -126,6 +126,9 @@ export default {
       const { data: detailRes } = await approvalsDetail({ id });
       if (detailRes.success) {
         this.ruleForm = detailRes.data;
+        THIS.ruleForm.data = JSON.parse(this.ruleForm.procData);
+        let type = this.ruleForm.data.holidayType;
+        this.ruleForm.data.holidayType = ((type == 1) ? "请假" : "调休");
       }
     },
     async btnClick() {

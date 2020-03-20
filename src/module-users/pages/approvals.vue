@@ -2,9 +2,9 @@
   <div class="usersApprovalsContainer">
     <div class="approvalsTop">
       <div class="topLab">
-        <span @click="tabSwitch('launch')" :class="[tabLab == 'launch' ? 'act' : '']">我发起的</span>
-        <span @click="tabSwitch('approvals')" :class="[tabLab == 'approvals' ? 'act' : '']">我审批的</span>
-        <span @click="tabSwitch('copy')" :class="[tabLab == 'copy' ? 'act' : '']">抄送我的</span>
+        <span @click="tabSwitch('launch')" :class="[tabLab == 'launch' ? 'act' : '']">全部</span>
+        <span @click="tabSwitch('approvals')" :class="[tabLab == 'approvals' ? 'act' : '']">我发起的</span>
+        <span @click="tabSwitch('copy')" :class="[tabLab == 'copy' ? 'act' : '']">待审批</span>
       </div>
     </div>
     <div class="approvalsContent">
@@ -105,9 +105,9 @@ export default {
       centerDialogVisible: false,
       topLabel: "转正",
       tabLab: "launch",
-      approvalsType:['转正','调岗','离职','工资审核','请假','加班','录用'],
+      approvalsType:['离职','请假','加班'],
       approvalsTypes: [],
-      approvalsState: ['待审批','审批驳回','已撤回','审批通过'],
+      approvalsState: ['审批中','审批通过','审批驳回','已撤回'],
       approvalsStates: [],
       tableData: [],
       page: 1,
