@@ -34,7 +34,7 @@
           <el-table-column sortable prop="username" label="姓名" width="150"></el-table-column>
           <el-table-column sortable prop="mobile" label="手机号" width="150"></el-table-column>
           <el-table-column sortable prop="workNumber" label="工号" width="120"></el-table-column>
-          <el-table-column sortable prop="formOfEmployment" label="聘用形势" width="200"></el-table-column>
+          <el-table-column sortable :formatter="judgeFormOfEmployment" label="聘用形势" width="200"></el-table-column>
           <el-table-column sortable prop="departmentName" label="部门" width="200"></el-table-column>
           <el-table-column sortable prop="timeOfEntry" label="入职时间" width="150"></el-table-column>
           <el-table-column sortable label="状态" width="120">
@@ -169,6 +169,9 @@ export default {
     handlPositive(id) {
       this.$refs.positive.dialogFormV(id)
     },
+    judgeFormOfEmployment(data){
+      return data.formOfEmployment == 1 ? '正式' : '非正式';
+    }
   },
   // 创建完毕状态
   created: function() {
