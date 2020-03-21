@@ -44,16 +44,6 @@
                       </span>  
                     </div>
                   </div>
-
-                  <!-- 
-                    构造树形列表
-                      叶子 <i class="fa fa-male"></i>
-                      非叶子 
-                        展开 <i class="fa fa-minus-square-o">
-                        闭合 <i class="fa fa-plus-square-o">
-                    <div class="generalClass" slot-scope="{node,data}" style="width:99%">
-                  -->
-
                   <div class="block">
                       <el-tree :props="{label:'name'}" :data="depts" node-key="id" default-expand-all>
                         <div class="generalClass" slot-scope="{node,data}" style="width:99%">
@@ -65,7 +55,7 @@
                           <div class="fr">
                           <span class="treeRinfo">
                             <div class="treeRinfo">
-                              <span>{{departData.companyManage}}</span>
+                              <span>{{data.manager}}</span>
                               <span>在职  <em class="colGreen" title="在职人数">---</em>&nbsp;&nbsp;(<em class="colGreen" title="正式员工">---</em>&nbsp;/&nbsp;<em class="colRed" title="非正式员工">---</em>)</span>
                             </div>
                             <div class="treeRinfo">
@@ -212,10 +202,6 @@ export default {
 }
 </style>
 <style  rel="stylesheet/scss" lang="scss" scoped>
-.el-tree-node__expand-icon{
- 
-}
-.el-icon-caret-right{}
 .el-tree-node__content{
   font-size: 14px;
   line-height: 36px;
@@ -258,11 +244,9 @@ export default {
   height: 50px;
   outline-offset: -2px;
   outline: 8px solid #fff;
-  -webkit-border-radius: 4px;
 }
 ::-webkit-scrollbar-track-piece {
   background-color: #fff;
-  -webkit-border-radius: 0;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -271,7 +255,6 @@ export default {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #fb4446;
   height: 50px;
-  -webkit-border-radius: 4px;
 }
 .modal-total {
   width: 100%;
