@@ -76,6 +76,8 @@
 
 <script>
 import { applyeLave } from "@/api/hrm/approvalsApi";
+import getters from '@/store/getters'
+
 
 export default {
   name: "users-table-index",
@@ -115,8 +117,15 @@ export default {
       this.ruleForm = {};
     },
     async applyLeave(){
-      let sendForm = this.ruleForm
-      sendForm.holidayType = this.opType
+      let sendForm = this.ruleForm;
+      if(this.opType == 7){
+        sendForm.processName = "请假";
+      }else{
+        sendForm.processName = "调休";
+      }
+      sendForm.duration = this.duration;
+      sendForm.userId = getters.userId;
+      sendForm.processKey = 'process_leave';
       const { data: saveRes } = await applyeLave(sendForm)
       if(saveRes.success){
         this.ruleForm = {}
@@ -126,14 +135,13 @@ export default {
   },
   computed: {
     computeDuration() {
-      let duration = 0
       if(this.ruleForm.startTime&&this.ruleForm.endTime){
         let durationStamp=this.ruleForm.endTime-this.ruleForm.startTime
         let fourHours=1000*60*60*4
         let total=Math.floor(durationStamp/fourHours)
-        duration=Math.floor(total/2)+(total%2*0.5)
+        this.duration=Math.floor(total/2)+(total%2*0.5)
       }
-      return duration;
+      return this.duration;
     }
   }
 };
@@ -141,6 +149,4 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import "./../../styles/variables";
-// .usersContainer {
-// }
 </style>

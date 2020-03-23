@@ -63,6 +63,8 @@ import OverTimeWork from './../components/OverTimeWork'
 import LeaveRelevant from '../components/LeaveRelevant'
 import DateIndex from '../components/DateIndex'
 import { log } from 'util';
+import getters from '@/store/getters'
+
 export default {
   name: 'users-table-index',
   components: { Apply, OverTimeWork, LeaveRelevant, DateIndex },
@@ -81,15 +83,15 @@ export default {
   methods: {
     init() {
       this.userInfo()
-      this.getNotices()
+      //this.getNotices()
     },
     noticeClick(item){
       this.$bus.emit("noticeDetail",item)
       this.$bus.off()
     },
     async userInfo(){
-        this.userId=this.$store.getters.userId
-        let id=this.userId
+        this.userId=getters.userId;
+        let id=this.userId;
         const { data: userInfoRes } = await detail({id})
         if(userInfoRes.success == true){
             this.myInfo=userInfoRes.data

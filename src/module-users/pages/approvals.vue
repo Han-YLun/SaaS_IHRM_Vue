@@ -3,8 +3,8 @@
     <div class="approvalsTop">
       <div class="topLab">
         <span @click="tabSwitch('launch')" :class="[tabLab == 'launch' ? 'act' : '']">全部</span>
-        <span @click="tabSwitch('approvals')" :class="[tabLab == 'approvals' ? 'act' : '']">我发起的</span>
-        <span @click="tabSwitch('copy')" :class="[tabLab == 'copy' ? 'act' : '']">待审批</span>
+        <span @click="tabSwitch('approvals')" :class="[tabLab == 'approvals' ? 'act' : '']">待审批</span>
+        <span @click="tabSwitch('copy')" :class="[tabLab == 'copy' ? 'act' : '']">我发起的</span>
       </div>
     </div>
     <div class="approvalsContent">
@@ -34,19 +34,20 @@
       </div>
       <div>
         <el-table :data="tableData" style="width: 100%">
+          <el-table-column type="processId" width="28" hidden></el-table-column>
           <el-table-column type="selection" width="28"></el-table-column>
           <el-table-column type="index" label="序号" width="60"></el-table-column>
-          <el-table-column prop="approvalType" label="审批类型"></el-table-column>
-          <el-table-column prop="applicant" label="申请人"></el-table-column>
-          <el-table-column prop="currentApprover" label="当前审批人"></el-table-column>
-          <el-table-column prop="approvalInitiationTime" label="审批发起时间"></el-table-column>
+          <el-table-column prop="processName" label="审批类型"></el-table-column>
+          <el-table-column prop="username" label="申请人"></el-table-column>
+          <el-table-column prop="procCurrNodeUserName" label="当前审批人"></el-table-column>
+          <el-table-column prop="procApplyTime" label="审批发起时间"></el-table-column>
           <el-table-column prop="finalOperationTime" label="最后操作时间"></el-table-column>
-          <el-table-column prop="stateOfApproval" label="审批状态"></el-table-column>
+          <el-table-column :formatter="judgeProcessState" label="审批状态"></el-table-column>
           <el-table-column label="操作">
             <template slot-scope="item">
               <el-button v-show="tabLab == 'launch' && (item.row.stateOfApproval == '待审批' || item.row.stateOfApproval == '已驳回')" size="mini" type="primary" @click="clickCancel(item.row.id)">撤销</el-button>
-              <el-button v-show="tabLab == 'approvals' && item.row.currentApproverId == userId" size="mini" type="primary" @click="clickPass(item.row.id)">通过</el-button>
-              <el-button v-show="tabLab == 'approvals' && item.row.currentApproverId == userId" size="mini" type="primary" @click="clickBack(item.row.id)">驳回</el-button>
+              <el-button v-show="tabLab == 'approvals'  && item.row.procCurrNodeUserId == userId" size="mini" type="primary" @click="clickPass(item.row.processId)">通过</el-button>
+              <el-button v-show="tabLab == 'approvals' && item.row.procCurrNodeUserId == userId" size="mini" type="primary" @click="clickBack(item.row.processId)">驳回</el-button>
               <el-button size="mini" type="primary" @click="clickDetail(item.row.id,item.row.approvalType)">查看</el-button>
               <el-button size="mini" type="danger">打印</el-button>
             </template>
@@ -87,6 +88,7 @@ import Examine from "../components/Examine";
 import Leave from "../components/LeaveJob";
 import Overtime from "../components/Overtime";
 import Employment from "../components/Employment";
+import getters from '@/store/getters'
 
 export default {
   name: "users-table-index",
@@ -119,7 +121,8 @@ export default {
   },
   methods: {
     async init() {
-      this.userId = this.$store.getters.userId;
+      this.userId = getters.userId;
+      console.log(this.userId);
       let sendData = {};
       if (this.tabLab == "launch") {
         sendData.applicant=this.userId
@@ -146,7 +149,13 @@ export default {
         }
     },
     async passProcess(id){
-      const { data: passRes } = await approvalsPass({id});
+      console.log("passProcess : " + id);
+      let sendForm = {};
+      sendForm.processId = id;
+      sendForm.handleType = '2';
+      sendForm.handleUserId = getters.userId;
+      sendForm.handleOpinion = '同意';
+      const { data: passRes } = await approvalsPass(sendForm);
         if(passRes.success){
           this.$message.success("操作成功")
           this.init()
@@ -196,6 +205,7 @@ export default {
         center: true
       })
         .then(() => {
+                console.log("passProcess : " + id);
           this.passProcess(id)
         })
         .catch(() => {});
@@ -253,6 +263,19 @@ export default {
     closeDialog(){
       this.centerDialogVisible = false
       this.init()
+    },
+    judgeProcessState(data){
+      if(data.processState == 0){
+        return '已提交';
+      }else if(data.processState == 1){
+        return '审批中';
+      }else if(data.processState == 2){
+        return '审批通过';
+      }else if(data.processState == 3){
+        return '审批不通过';
+      }else if(data.processState == 4){
+        return '撤销';
+      }
     }
   },
   mounted() {
