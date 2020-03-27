@@ -31,7 +31,6 @@ export default {
     methods: {
         toAssignPrem(id) {
             detail({id:id}).then(res1 => {
-                this.checkedRoles = res1.data.data.roleIds;
                 findAll().then(res => {
                     this.id = id;
                     this.roles = res.data.data
