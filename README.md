@@ -6,13 +6,29 @@
 
 https://nodejs.org/en/
 
+
+
 ### 2. 安装包依赖
 
 ```sh
 yarn
 ```
 
-### 3. 配置 API 地址
+
+
+### 3.运行项目
+
+先安装依赖包，然后安装mockjs依赖包，最后运行
+
+```shell
+cnpm install 
+cnpm install mockjs
+npm run dev
+```
+
+
+
+### 4. 配置 API 地址
 
 编辑文件 config/index.js
 
@@ -41,21 +57,4 @@ module.exports = {
       }
     },
 ```
-
-### 4. 运行
-
-```sh
-npm start
-```
-
-
-
-## 5.运行项目
-
-```sh
-cnpm install
-npm run dev
-```
-
-
 
