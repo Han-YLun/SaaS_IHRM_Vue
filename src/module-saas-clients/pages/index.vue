@@ -25,7 +25,7 @@
                -->
                 <el-switch
                     v-model="scope.row.state"
-                    inactive-value="0"    
+                    inactive-value="1"    
                     active-value="1"
                     disabled
                     active-color="#13ce66"
