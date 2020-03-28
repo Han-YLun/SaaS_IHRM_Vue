@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     assignPrem() {
-      assignPrem({id:this.formData.id,permIds:this.$refs.tree.getCheckedKeys()}).then(res => {
+      assignPrem({id:this.formData.id,permIds:this.$refs.tree.getCheckedKeys().concat(this.$refs.tree.getHalfCheckedKeys())}).then(res => {
          this.$message({message:res.data.message,type:res.data.success?"success":"error"});
          this.permFormVisible=false
       })
