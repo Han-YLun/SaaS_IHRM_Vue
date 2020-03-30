@@ -66,11 +66,6 @@ export default {
       } else {
         callback()
       }
-      // if (!validateEmail(value)) {
-      //   callback(new Error('Please enter the email user name'))
-      // } else {
-      //   callback()
-      // }
     }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
@@ -111,6 +106,10 @@ export default {
       }
     },
     handleLogin() {
+      if(this.loginForm.username.length < 6 || this.loginForm.password.length < 6){
+        this.$message.error('用户名或密码不能低于6位')
+        return; 
+      }
       this.loading = true
       this.$store
         .dispatch('LoginByUsername', {
@@ -174,7 +173,6 @@ $light_gray: #68b0fe;
       color: $light_gray;
       height: 47px;
       &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
         -webkit-text-fill-color: #fff !important;
       }
     }
