@@ -30,23 +30,13 @@
       </el-card>
       <el-card shadow="never" class="boxMar">
         <el-table :data="dataList" fit style="width: 100%;" border>
-          <el-table-column type="index" :index="1" label="序号" width="150"> </el-table-column>
-          <el-table-column sortable prop="username" label="姓名" width="150"></el-table-column>
+          <el-table-column type="index" :index="1" label="序号" width="50"> </el-table-column>
+          <el-table-column sortable prop="username" label="姓名" width="120"></el-table-column>
           <el-table-column sortable prop="mobile" label="手机号" width="150"></el-table-column>
           <el-table-column sortable prop="workNumber" label="工号" width="120"></el-table-column>
-          <el-table-column sortable :formatter="judgeFormOfEmployment" label="聘用形势" width="200"></el-table-column>
-          <el-table-column sortable prop="departmentName" label="部门" width="200"></el-table-column>
-          <el-table-column sortable prop="timeOfEntry" label="入职时间" width="150"></el-table-column>
-          <el-table-column sortable label="状态" width="120">
-            <template slot-scope="scope">
-              <el-switch 
-              v-model="scope.row.accountStatus" 
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-               @change="handleStatus(scope.row)">
-              </el-switch>
-            </template>
-          </el-table-column>
+          <el-table-column sortable :formatter="judgeFormOfEmployment" label="聘用形势" width="120"></el-table-column>
+          <el-table-column sortable prop="departmentName" label="部门" width="120"></el-table-column>
+          <el-table-column sortable :formatter="formatterDate" prop="timeOfEntry" label="入职时间" width="150"></el-table-column>
           <el-table-column fixed="right" label="操作" align="center" width="260">
             <template slot-scope="scope">
               <router-link :to="{'path':'/employees/details/' + scope.row.id}" class="el-button el-button--text el-button--small">
@@ -93,6 +83,7 @@ import addRole from './../components/addRole'
 import {hasPermissionPoint} from '@/utils/permission'
 import employeesPositive from './../components/turn-positive'
 import employeesSet from './../components/setting'
+import commonApi from '@/utils/common'
 import {
   positiveDetail,
   settDetail,
@@ -171,6 +162,10 @@ export default {
     },
     judgeFormOfEmployment(data){
       return data.formOfEmployment == 1 ? '正式' : '非正式';
+    },
+    formatterDate(data){
+      let date = data.timeOfEntry; 
+      return commonApi.dateFormat(date);
     }
   },
   // 创建完毕状态
@@ -194,8 +189,6 @@ export default {
 .serachInput {
   .el-input--medium {
     width: 150px;
-    .el-input__inner {
-    }
   }
 }
 .serachInput .el-input--medium .el-input__inner {
