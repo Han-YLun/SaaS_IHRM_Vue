@@ -22,7 +22,6 @@
         </span>
         <div class="fr">
             <router-link :to="{'path':'/employees/import/',query: {name: '员工'}}" class="el-button el-button--primary el-button--mini" title="导入">导入</router-link>
-            <el-button type="primary" size="mini" title="设置">设置</el-button>
             <router-link :to="{'path':'/employees/archiving/'}" class="el-button el-button--primary el-button--mini" title="历史归档">历史归档</router-link>
             <router-link :to="{'path':'/employees/report/1'}" class="el-button el-button--primary el-button--mini" >1月份报表</router-link>
             <el-button  type="primary" size="mini" icon="el-icon-plus" @click="handlAdd">新增员工</el-button>
@@ -43,9 +42,6 @@
                 查看
               </router-link>
               <el-button @click="handlPositive(scope.row.id)" type="text" size="small">转正</el-button>
-              <router-link :to="{'path':'/employees/adjustPost/' + scope.row.id}" class="el-button el-button--text el-button--small">
-                调岗
-              </router-link>
               <router-link :to="{'path':'/employees/leave/' + scope.row.id}" class="el-button el-button--text el-button--small">
                 离职
               </router-link>   

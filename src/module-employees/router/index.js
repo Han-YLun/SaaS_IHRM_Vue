@@ -70,16 +70,6 @@ export default [
           title: '离职'
         }
       },
-      // 调岗
-      {
-        path: 'adjustPost/:id',
-        component: _import('employees/pages/employees-adjustpost'),
-        // hidden: true, // 是否显示在左侧菜单
-        name: 'adjustPost',
-        meta: {
-          title: '调岗'
-        }
-      },
       // 导入
       {
         path: 'import',
