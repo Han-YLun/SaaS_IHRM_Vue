@@ -12,8 +12,8 @@
             <el-table-column fixed type="index" label="序号" width="50"></el-table-column>
             <el-table-column fixed prop="name" label="企业名称"  width="200"></el-table-column>
             <el-table-column fixed prop="version" label="版本"  width="150"></el-table-column>
-            <el-table-column fixed prop="companyphone" label="联系电话"  width="150"></el-table-column>
-            <el-table-column fixed prop="expirationDate" label="截至时间"  width="150"></el-table-column>
+            <el-table-column fixed prop="companyPhone" label="联系电话"  width="150"></el-table-column>
+            <el-table-column fixed :formatter="formatterDate" prop="expirationDate" label="截至时间"  width="150"></el-table-column>
             <el-table-column fixed prop="state" label="状态"  width="150">
               <!--scope:传递当前行的所有数据 -->
               <template slot-scope="scope">
@@ -46,6 +46,7 @@
 
 <script>
 import {list} from '@/api/base/saasClient'
+import commonApi from '@/utils/common'
 export default {
   name: 'saas-clients-index',
   data () {
@@ -61,13 +62,18 @@ export default {
         console.log(res.data)
         this.dataList = res.data.data
       })
+    },
+    formatterDate(data){
+      let date = data.expirationDate; 
+      return commonApi.dateFormat(date);
     }
   },
   // 创建完毕状态
   created() {
     this.getList()
   }
-}
+ 
+} 
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

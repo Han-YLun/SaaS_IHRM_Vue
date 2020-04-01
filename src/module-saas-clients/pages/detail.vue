@@ -21,7 +21,7 @@
                       <el-input v-model="formData.mailbox"  style="width:250px"  disabled></el-input>
                     </el-form-item>
                     <el-form-item label="备注">
-                      <el-input v-model="formData.remark"  style="width:250px" ></el-input>
+                      <el-input v-model="formData.remarks"  style="width:250px" ></el-input>
                     </el-form-item>
                     <el-form-item>
                       <el-button type="primary">审核</el-button>

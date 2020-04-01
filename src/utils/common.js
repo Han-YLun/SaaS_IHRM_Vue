@@ -20,6 +20,7 @@ export default {
     // 拼接
     return year + "-" + month + "-" + day
   },
+  
   dateaMonth: function (time) {
     var date = new Date(time);
     var year = date.getFullYear();
