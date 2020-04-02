@@ -78,7 +78,7 @@ export default {
       this.init()
     },
     goDetail(row, event, column) {
-      this.$router.push({ path: "detail/1063705989926227968" });
+      this.$router.push({ path: "detail/" + row.id });
     },
     onPageSizeChange(pageSize) {
       this.selectParams.pageSize=pageSize
