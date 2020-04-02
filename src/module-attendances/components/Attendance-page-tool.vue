@@ -30,7 +30,6 @@
         <el-badge is-dot class="item">
           <el-button type="primary" size="mini" title="提醒" @click="handleTip">提醒</el-button>
         </el-badge>
-        <el-button type="primary" size="mini" title="设置" @click="handleSet">设置</el-button>
         <router-link
           :to="{'path':'/attendances/archiving/'}"
           class="el-button el-button--primary el-button--mini"
@@ -47,7 +46,7 @@
         <p>系统将通过邮件与短信的形式，对全体员工中存在旷工的考勤进行提醒，该提醒每月仅可发送 1 次。</p>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="handleSub">我知道了</el-button>
+        <el-button type="primary" @click="centerDialogVisible = false">我知道了</el-button>
         <el-button @click="centerDialogVisible = false">取 消</el-button>
       </span>
     </el-dialog>
@@ -126,12 +125,6 @@ export default {
       this.departmentList=departmentRes.data.depts
       this.stateData = attendanceApi;
     },
-    handleSub() {
-      alert().then(() => {
-        this.centerDialogVisible = false;
-        this.$emit("dataList", this.formData);
-      });
-    },
     // 集合搜索
     searchIcon() {
       this.iconShow = false;
@@ -197,8 +190,6 @@ export default {
 .serachInput {
   .el-input--medium {
     width: 150px;
-    .el-input__inner {
-    }
   }
 }
 .serachInput .el-input--medium .el-input__inner {

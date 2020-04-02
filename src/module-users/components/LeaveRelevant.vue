@@ -18,7 +18,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="开始时间">
-        <el-col :span="8">
+        <el-col :span="12">
           <el-date-picker
             type="datetime"
             placeholder="选择日期"
@@ -28,7 +28,7 @@
         </el-col>
       </el-form-item>
       <el-form-item label="结束时间">
-        <el-col :span="8">
+        <el-col :span="12">
           <el-date-picker
             type="datetime"
             placeholder="选择日期"
