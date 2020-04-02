@@ -73,8 +73,6 @@ export default {
         color: $orange;
       }
     }
-    .formList {
-    }
     .jurisdictionSet {
       position: relative;
       .addAdmin {
