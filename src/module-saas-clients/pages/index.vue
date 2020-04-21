@@ -14,26 +14,17 @@
             <el-table-column fixed prop="version" label="版本"  width="150"></el-table-column>
             <el-table-column fixed prop="companyPhone" label="联系电话"  width="150"></el-table-column>
             <el-table-column fixed :formatter="formatterDate" prop="expirationDate" label="截至时间"  width="150"></el-table-column>
-            <el-table-column fixed prop="state" label="状态"  width="150">
-              <!--scope:传递当前行的所有数据 -->
+            <el-table-column prop="state" label="状态"  width="150">
               <template slot-scope="scope">
-              <!--开关组件
-                  active-value：激活的数据值
-                  active-color：激活的颜色
-                  inactive-value：未激活
-                  inactive-color：未激活的颜色
-               -->
                 <el-switch
+                    :disabled="true"
                     v-model="scope.row.state"
-                    inactive-value="1"    
-                    active-value="1"
-                    disabled
-                    active-color="#13ce66"
-                    inactive-color="#ff4949">
+                    @click.native="changeSwitch($event , scope.row ,  scope.$index,scope.row.state)"
+                    >
                 </el-switch>
               </template>
             </el-table-column>
-            <el-table-column fixed="right" label="操作" width="150">
+            <el-table-column label="操作" width="150">
               <template slot-scope="scope">
                 <router-link :to="'/saas-clients/details/' + scope.row.id">查看</router-link>
               </template>
@@ -46,6 +37,7 @@
 
 <script>
 import {list} from '@/api/base/saasClient'
+import {putState} from '@/api/base/saasClient'
 import commonApi from '@/utils/common'
 export default {
   name: 'saas-clients-index',
@@ -59,9 +51,27 @@ export default {
       //调用API发起请求
       //res=响应数据
       list().then(res => {
-        console.log(res.data)
         this.dataList = res.data.data
       })
+    },
+    async changeSwitch($event , row  , index,state){    
+
+      const info = await this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).catch(err=>err);
+
+      if(info!='confirm'){
+          this.state = false;
+          return this.$message.info("用户取消了操作");
+      }else{
+         this.state = true;
+        putState(row).then(res => {
+          this.$message.success("更新成功");
+        })
+      }
+
     },
     formatterDate(data){
       let date = data.expirationDate; 

@@ -9,16 +9,16 @@
                   -->
                   <el-form ref="form" :model="formData" label-width="200px">
                     <el-form-item label="企业名称" >
-                      <el-input v-model="formData.name" style="width:250px" disabled></el-input>
+                      <el-input v-model="formData.name" style="width:250px" ></el-input>
                     </el-form-item>
                     <el-form-item label="公司地址">
-                      <el-input v-model="formData.companyAddress"  style="width:250px"  disabled></el-input>
+                      <el-input v-model="formData.companyAddress"  style="width:250px"  ></el-input>
                     </el-form-item>
                     <el-form-item label="公司电话">
-                      <el-input v-model="formData.companyPhone"  style="width:250px"  disabled></el-input>
+                      <el-input v-model="formData.companyPhone"  style="width:250px"  ></el-input>
                     </el-form-item>
                     <el-form-item label="邮箱">
-                      <el-input v-model="formData.mailbox"  style="width:250px"  disabled></el-input>
+                      <el-input v-model="formData.mailbox"  style="width:250px"  ></el-input>
                     </el-form-item>
                     <el-form-item label="备注">
                       <el-input v-model="formData.remarks"  style="width:250px" ></el-input>
@@ -29,8 +29,6 @@
                     </el-form-item>
                   </el-form>
                 </el-tab-pane>
-                <el-tab-pane label="账户信息" name="second">账户信息</el-tab-pane>
-                <el-tab-pane label="交易记录" name="third">交易记录</el-tab-pane>
             </el-tabs>
       </el-card>
      </div>
@@ -51,8 +49,6 @@ export default {
     detail(id) {
       detail({id:id}).then(res => {
         this.formData = res.data.data
-        console.log(id)
-        console.log(this.formData)
       })
     }
   },
