@@ -24,7 +24,7 @@
                 </el-switch>
               </template>
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column label="操作" width="100">
               <template slot-scope="scope">
                 <router-link :to="'/saas-clients/details/' + scope.row.id">查看</router-link>
               </template>
@@ -56,7 +56,7 @@ export default {
     },
     async changeSwitch($event , row  , index,state){    
 
-      const info = await this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+      const info = await this.$confirm('是否禁用此公司所有账号, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -66,9 +66,10 @@ export default {
           this.state = false;
           return this.$message.info("用户取消了操作");
       }else{
-         this.state = true;
-        putState(row).then(res => {
+          this.state = true;
+          putState(row).then(res => {
           this.$message.success("更新成功");
+          this.state = true;
         })
       }
 

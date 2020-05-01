@@ -43,19 +43,6 @@
                 公告
               </div>
               <div class="contentItem">
-                <!-- <ul class="noticeList">
-                  <li v-for="item in filteredItems" :key="item.id">
-                    <router-link :to="{'path':'./noticeDetails'}">
-                      <div class="item">
-                        <img :src="item.addPersonHeaderImage" alt="">
-                        <div>
-                          <p><span class="col">{{item.addPerson}}</span> 发布了 {{item.bulletinTitle}}</p>
-                          <p>{{item.latestOperationTime}}</p>
-                        </div>
-                      </div>
-                    </router-link>
-                  </li>
-                </ul> -->
                 <ul class="noticeList">
                   <li>
                     <div class="item">

@@ -4,10 +4,10 @@ const _import = require('@/router/import_' + process.env.NODE_ENV)
 export default [
   {
     root: true,
-    path: '/saas-demo',
+    path: '/menusManage',
     component: Layout,
     redirect: 'noredirect',
-    name: 'demo',
+    name: 'menusManage',
     meta: {
       title: 'xxx业务模块管理',
       icon: 'component'
@@ -15,9 +15,9 @@ export default [
     children: [
       {
         path: 'index',  //请求地址
-        component: _import('demo/pages/index'), //跳转的vue视图
-        name: 'demo-index',
-        meta: {title: 'demo', icon: 'component', noCache: true}
+        component: _import('menusManage/pages/index'), //跳转的vue视图
+        name: 'menusManage-index',
+        meta: {title: 'menusManage', icon: 'component', noCache: true}
       }
     ]
   }
