@@ -58,3 +58,10 @@ module.exports = {
     },
 ```
 
+
+
+## 后端
+
+后端使用微服务编写，使用SpringBoot + SpringCloud + SpringMVC + SpringData
+
+地址为：https://github.com/Han-YLun/SaaS_IHRM

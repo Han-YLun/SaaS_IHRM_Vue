@@ -17,7 +17,7 @@ export default [
         path: 'index',  //请求地址
         component: _import('menusManage/pages/index'), //跳转的vue视图
         name: 'menusManage-index',
-        meta: {title: 'menusManage', icon: 'component', noCache: true}
+        meta: {title: '模块管理', icon: 'component', noCache: true}
       }
     ]
   }
