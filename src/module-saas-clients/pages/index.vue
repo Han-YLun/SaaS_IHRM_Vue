@@ -17,9 +17,11 @@
             <el-table-column prop="state" label="状态"  width="150">
               <template slot-scope="scope">
                 <el-switch
-                    :disabled="true"
                     v-model="scope.row.state"
-                    @click.native="changeSwitch($event , scope.row ,  scope.$index,scope.row.state)"
+                    @click.native.prevent="changeSwitch(scope.row,scope.row.state)"
+                     :active-value="1" 
+                     :inactive-value="0"
+                    disabled
                     >
                 </el-switch>
               </template>
@@ -43,7 +45,7 @@ export default {
   name: 'saas-clients-index',
   data () {
     return {
-      dataList:[]
+      dataList:[],
     }
   },
   methods: {
@@ -54,23 +56,28 @@ export default {
         this.dataList = res.data.data
       })
     },
-    async changeSwitch($event , row  , index,state){    
-
-      const info = await this.$confirm('是否禁用此公司所有账号, 是否继续?', '提示', {
+    async changeSwitch(row,state){   
+      let dialogText = '';  
+      if(state == 0){
+        dialogText = '是否启用公司所有账号, 是否继续?';
+      }else{
+        dialogText = '是否禁用公司所有账号, 是否继续?';
+      }
+      const info = await this.$confirm(dialogText, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).catch(err=>err);
 
-      if(info!='confirm'){
-          this.state = false;
-          return this.$message.info("用户取消了操作");
-      }else{
-          this.state = true;
+      if(info == 'confirm'){
+          if(row.state == 0){
+            row.state = 1;
+          }else{
+            row.state = 0;
+          }
           putState(row).then(res => {
-          this.$message.success("更新成功");
-          this.state = true;
-        })
+            this.$message.success("更新成功");
+          })
       }
 
     },
@@ -94,5 +101,9 @@ export default {
 .pagination {
   margin-top: 10px;
   text-align: right;
+}
+.app-container /deep/ .el-switch__core,
+.app-container /deep/ .el-switch__label{
+  cursor: default;
 }
 </style>

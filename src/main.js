@@ -33,7 +33,6 @@ Vue.prototype.$tools = tools
 
 Vue.use(tools)
 Vue.use(dashboard, store)
-Vue.use(menusManage, store)
 Vue.use(saasClients,store)
 Vue.use(departments,store)
 Vue.use(employees,store)
@@ -43,7 +42,7 @@ Vue.use(socialSecuritys,store)
 Vue.use(attr,store)
 Vue.use(salarys,store)
 Vue.use(audit,store)
-
+Vue.use(menusManage, store)
 /*
 * 注册 - 组件
 */
