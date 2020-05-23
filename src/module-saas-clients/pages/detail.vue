@@ -24,8 +24,7 @@
                       <el-input v-model="formData.remarks"  style="width:250px" ></el-input>
                     </el-form-item>
                     <el-form-item>
-                      <el-button type="primary">审核</el-button>
-                      <el-button>拒绝</el-button>
+                      <el-button type="primary">提交</el-button>
                     </el-form-item>
                   </el-form>
                 </el-tab-pane>
@@ -42,7 +41,14 @@ export default {
   data () {
     return {
         activeName: 'first',
-        formData:{}
+        formData:{},
+        options:[{
+          value: '0',
+          label: '禁用'
+        },{
+          value: '1',
+          label: '启用'
+        }]
     }
   },
   methods: {

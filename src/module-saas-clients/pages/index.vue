@@ -5,12 +5,12 @@
         <!--elementui的table组件
           data：数据模型
          -->
-        <el-table  :data="dataList"  border style="width: 100%">
+        <el-table  :data="dataList"  border>
             <!--el-table-column : 构造表格中的每一列 
               prop： 数组中每个元素对象的属性名
             -->
             <el-table-column fixed type="index" label="序号" width="50"></el-table-column>
-            <el-table-column fixed prop="name" label="企业名称"  width="200"></el-table-column>
+            <el-table-column fixed prop="name" label="企业名称" ></el-table-column>
             <el-table-column fixed prop="version" label="版本"  width="150"></el-table-column>
             <el-table-column fixed prop="companyPhone" label="联系电话"  width="150"></el-table-column>
             <el-table-column fixed :formatter="formatterDate" prop="expirationDate" label="截至时间"  width="150"></el-table-column>
