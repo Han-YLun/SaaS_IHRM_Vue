@@ -20,6 +20,14 @@
                     <el-form-item label="邮箱">
                       <el-input v-model="formData.mailbox"  style="width:250px"  ></el-input>
                     </el-form-item>
+                    <el-form-item label="启/禁用">
+                       <el-select  :value="formData.state==options[0].value?options[0].label:options[1].label" placeholder="请选择">
+                          <el-option
+                            v-for="(item,index) in options" :key="index"
+                            :value="item.label">
+                          </el-option>
+                        </el-select>
+                    </el-form-item>
                     <el-form-item label="备注">
                       <el-input v-model="formData.remarks"  style="width:250px" ></el-input>
                     </el-form-item>
@@ -42,6 +50,10 @@ export default {
     return {
         activeName: 'first',
         formData:{},
+        // options:{
+        //   '0':'禁用',
+        //   '1':'启用'
+        // }
         options:[{
           value: '0',
           label: '禁用'
