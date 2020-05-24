@@ -1,22 +1,16 @@
-# SAAS IRHM 系统
+# SaaS IHRM 系统
 
-## 运行
+## Run
 
-### 1. 安装 nodejs
+### 1. Install  node.js
 
 https://nodejs.org/en/
 
 
 
-### 2. 安装包依赖
-
-```sh
-yarn
-```
 
 
-
-### 3.运行项目
+### 2.Run Project
 
 先安装依赖包，然后安装mockjs依赖包，最后运行
 
@@ -28,7 +22,7 @@ npm run dev
 
 
 
-### 4. 配置 API 地址
+### 4. Config API Address
 
 编辑文件 config/index.js
 
