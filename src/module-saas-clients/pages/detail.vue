@@ -21,7 +21,7 @@
                       <el-input v-model="formData.mailbox"  style="width:250px"  ></el-input>
                     </el-form-item>
                     <el-form-item label="启/禁用">
-                       <el-select  :value="formData.state==options[0].value?options[0].label:options[1].label" placeholder="请选择">
+                       <el-select :value="formData.state==options[0].value?options[0].label:options[1].label">
                           <el-option
                             v-for="(item,index) in options" :key="index"
                             :value="item.label">
@@ -32,7 +32,7 @@
                       <el-input v-model="formData.remarks"  style="width:250px" ></el-input>
                     </el-form-item>
                     <el-form-item>
-                      <el-button type="primary">提交</el-button>
+                      <el-button type="primary" @click="update">提交</el-button>
                     </el-form-item>
                   </el-form>
                 </el-tab-pane>
@@ -43,17 +43,13 @@
 </template>
 
 <script>
-import {detail} from '@/api/base/saasClient'
+import {detail,updateCompany} from '@/api/base/saasClient'
 export default {
   name: 'saas-clients-detail',
   data () {
     return {
         activeName: 'first',
         formData:{},
-        // options:{
-        //   '0':'禁用',
-        //   '1':'启用'
-        // }
         options:[{
           value: '0',
           label: '禁用'
@@ -67,6 +63,12 @@ export default {
     detail(id) {
       detail({id:id}).then(res => {
         this.formData = res.data.data
+      })
+    },
+    update(){
+      console.log(this.formData);
+      updateCompany(this.formData).then(res => {
+        this.$message({message:res.data.message,type:res.data.success?"success":"error"});
       })
     }
   },
