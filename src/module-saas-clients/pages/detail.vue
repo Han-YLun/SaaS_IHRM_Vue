@@ -21,7 +21,7 @@
                       <el-input v-model="formData.mailbox"  style="width:250px"  ></el-input>
                     </el-form-item>
                     <el-form-item label="启/禁用">
-                       <el-select :value="formData.state==options[0].value?options[0].label:options[1].label">
+                       <el-select v-model="a">
                           <el-option
                             v-for="(item,index) in options" :key="index"
                             :value="item.label">
@@ -48,13 +48,13 @@ export default {
   name: 'saas-clients-detail',
   data () {
     return {
-        activeName: 'first',
+        activeName: 'first',a:'',
         formData:{},
         options:[{
-          value: '0',
+          value: 0,
           label: '禁用'
         },{
-          value: '1',
+          value: 1,
           label: '启用'
         }]
     }
@@ -63,10 +63,11 @@ export default {
     detail(id) {
       detail({id:id}).then(res => {
         this.formData = res.data.data
+        this.a= this.formData.state==this.options[0].value?this.options[0].label:this.options[1].label
       })
     },
     update(){
-      console.log(this.formData);
+      this.formData.state = this.a == this.options[0].label ? this.options[0].value : this.options[1].value;
       updateCompany(this.formData).then(res => {
         this.$message({message:res.data.message,type:res.data.success?"success":"error"});
       })
