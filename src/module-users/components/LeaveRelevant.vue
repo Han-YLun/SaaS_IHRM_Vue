@@ -136,10 +136,8 @@ export default {
   computed: {
     computeDuration() {
       if(this.ruleForm.startTime&&this.ruleForm.endTime){
-        let durationStamp=this.ruleForm.endTime-this.ruleForm.startTime
-        let fourHours=1000*60*60*4
-        let total=Math.floor(durationStamp/fourHours)
-        this.duration=Math.floor(total/2)+(total%2*0.5)
+        let durationStamp=this.ruleForm.endTime-this.ruleForm.startTime;
+        this.duration=Math.floor((durationStamp) / 1000 / 60 / 60 / 24) ;
       }
       return this.duration;
     }

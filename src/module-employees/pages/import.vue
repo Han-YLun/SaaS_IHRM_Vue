@@ -45,7 +45,7 @@ export default {
       importCompon: 'importCompon',
       boxHeight: '',
       baseData: {
-        upUrl: '/api/attendances/import',
+        upUrl: '/api/sys/user/import',
         fileUrl: 'http://research.itcast.cn/files/saas-hrm/添加员工模板.xlsx'
       }
     }

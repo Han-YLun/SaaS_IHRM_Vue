@@ -46,9 +46,6 @@
                 离职
               </router-link>   
               <el-button @click="handleRole(scope.row)" type="text" size="small">角色</el-button>
-              <!--
-              <el-button v-if="show('point-user-delete')" @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
-              -->
               <el-button  @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
             </template>
           </el-table-column>
@@ -73,6 +70,7 @@
 <script>
 import constantApi from '@/api/constant/employees'
 import {list,remove} from "@/api/base/users"
+import {findRolesByUserId} from "@/api/base/role"
 import PageTool from './../../components/page/page-tool'
 import employeesAdd from './../components/add'
 import addRole from './../components/addRole'
@@ -150,7 +148,15 @@ export default {
         })
     },
     handleRole(item) {
+
+      
       this.$refs.addRole.toAssignPrem(item.id)
+      var req = {};
+      req.id = item.id;
+      console.log(req.id);
+      findRolesByUserId(req).then(res => {
+        this.$refs.addRole.addCheckedRoles(res.data.data.map(v=>v.id));
+      });
     },
     /**转正代码 */
     handlPositive(id) {

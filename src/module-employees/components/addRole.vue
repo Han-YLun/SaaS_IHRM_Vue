@@ -29,7 +29,11 @@ export default {
         }
     },
     methods: {
-        toAssignPrem(id) {
+      addCheckedRoles(arr){
+        console.log(arr)
+        this.checkedRoles=arr
+      },
+      toAssignPrem(id) {
             detail({id:id}).then(res1 => {
                 findAll().then(res => {
                     this.id = id;
@@ -39,6 +43,7 @@ export default {
             })
         },
         createData() {
+          console.log(this.checkedRoles)
             assignRoles({id:this.id,roleIds:this.checkedRoles}).then(res => {
                 this.$message({message:res.data.message,type:res.data.success?"success":"error"});
                 this.roleFormVisible=false

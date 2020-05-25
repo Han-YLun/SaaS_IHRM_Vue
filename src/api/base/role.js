@@ -9,4 +9,4 @@ export const remove = data => createAPI(`/sys/role/${data.id}`, 'delete', data)
 export const detail = data => createAPI(`/sys/role/${data.id}`, 'get', data)
 export const assignPrem = data => createAPI(`/sys/role/assignPrem`, 'put', data)
 export const findAll = data => createAPI(`/sys/role/list`,'get',data)
-
+export const findRolesByUserId = data => createAPI(`/sys/role/userId/${data.id}`,'get',data)
