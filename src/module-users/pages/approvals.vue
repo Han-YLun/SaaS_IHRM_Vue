@@ -46,8 +46,8 @@
           <el-table-column label="操作">
             <template slot-scope="item">
               <el-button v-show="tabLab == 'launch' && (item.row.stateOfApproval == '待审批' || item.row.stateOfApproval == '已驳回')" size="mini" type="primary" @click="clickCancel(item.row.id)">撤销</el-button>
-              <el-button v-show="tabLab == 'approvals'  && item.row.procCurrNodeUserId == userId" size="mini" type="primary" @click="clickPass(item.row.processId)">通过</el-button>
-              <el-button v-show="tabLab == 'approvals' && item.row.procCurrNodeUserId == userId" size="mini" type="primary" @click="clickBack(item.row.processId)">驳回</el-button>
+              <el-button v-show="tabLab == 'approvals'  && item.row.procCurrNodeUserId == userId && item.row.processState != 2" size="mini" type="primary" @click="clickPass(item.row.processId)">通过</el-button>
+              <el-button v-show="tabLab == 'approvals' && item.row.procCurrNodeUserId == userId && item.row.processState != 2" size="mini" type="primary" @click="clickBack(item.row.processId)">驳回</el-button>
               <el-button size="mini" type="primary" @click="clickDetail(item.row.id,item.row.approvalType)">查看</el-button>
               <el-button size="mini" type="danger">打印</el-button>
             </template>
