@@ -296,10 +296,10 @@ export default {
       this.common = commonApi
       this.getObjInfo()
       // // 员工列表
-      userApi.simple().then(ret => {
-        this.employeesSimpleListData = ret.data.data
-        console.log(this.employeesSimpleListData)
-      })
+      // userApi.simple().then(ret => {
+      //   this.employeesSimpleListData = ret.data.data
+      //   console.log(this.employeesSimpleListData)
+      // })
     },
     // 退出
     handleClose() {},
