@@ -41,15 +41,10 @@ export default {
   },
   methods: {
     delete_img(item) {
-      // console.log(item)
-      // this.imgs.splice(item, 1)
       this.imgs = ''
     },
     // 图片下载
     fillDownload(fid) {
-      if (fid) {
-
-      }
     },
     handleRemove(file, fileList) {
       this.uploadDisabled = false
@@ -66,7 +61,6 @@ export default {
   },
   // 创建完毕状态
   mounted: function() {
-    // console.log(this.imgN)
     if (this.imgN === 0) {
       this.textTip = '身份证正面'
     }
