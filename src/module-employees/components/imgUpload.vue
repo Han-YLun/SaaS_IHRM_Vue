@@ -81,7 +81,6 @@ export default {
 </style>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .finish_room {
-  float: left;
   width: 150px;
   height: 150px;
   line-height: 100px;
