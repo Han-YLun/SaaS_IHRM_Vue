@@ -22,7 +22,7 @@ npm run dev
 
 
 
-### 4. Config API Address
+### 3. Config API Address
 
 编辑文件 config/index.js
 
