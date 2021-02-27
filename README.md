@@ -22,7 +22,7 @@ npm run dev
 
 
 
-### 4. Config API Address
+### 3. Config API Address
 
 编辑文件 config/index.js
 
@@ -35,21 +35,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '',
     proxyTable: {
+      //企业信息请求的远程服务 //Updated 将直接对后台问服务请求,改为请求Zuul网关
       '/api': {
-        target: 'https://mock.boxuegu.com/mock/29',
+        target: 'http://localhost:9091',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
         }
-      },
-      '/upfile': {
-        target: 'http://172.17.0.65/system/upfile',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/upfile': ''
-        }
       }
     },
+  
+  }
 ```
 
 启动教程: [https://www.cnblogs.com/ArvinYL/p/14457187.html](https://www.cnblogs.com/ArvinYL/p/14457187.html)
