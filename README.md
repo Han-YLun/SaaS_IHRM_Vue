@@ -1,5 +1,14 @@
 # SaaS IHRM 系统
 
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Han-YLun&repo=SaaS_IHRM_Vue)](https://github.com/Han-YLun/SaaS_IHRM_Vue)
+
+
+[![知识共享协议（CC协议）](https://img.shields.io/badge/License-Creative%20Commons-DC3D24.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
+[![GitHub stars](https://img.shields.io/github/stars/Han-YLun/SaaS_IHRM_Vue.svg?style=flat&label=Star)](https://github.com/Han-YLun/SaaS_IHRM_Vue/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Han-YLun/SaaS_IHRM_Vue.svg?style=flat&label=Fork)](https://github.com/Han-YLun/SaaS_IHRM_Vue/fork)
+[![GitHub watchers](https://img.shields.io/github/watchers/Han-YLun/SaaS_IHRM_Vue.svg?style=flat&label=Watch)](https://github.com/Han-YLun/SaaS_IHRM_Vue/watchers)
+[![GitHub followers](https://img.shields.io/github/followers/Han-YLun.svg?label=%E5%85%B3%E6%B3%A8)](https://github.com/Han-YLun/SaaS_IHRM_Vue)
+
 ## Run
 
 ### 1. Install  node.js
